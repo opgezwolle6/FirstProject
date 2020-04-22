@@ -5,27 +5,25 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import android.os.Bundle;
-import android.view.View;
 
-public class MainActivity extends AppCompatActivity  {
 
-    Fragment1 fragment1;
-    Fragment2 fragment2;
+public class AuthorizationActivity extends AppCompatActivity  {
+
+    Fragment3 fragment3;
+    Fragment4 fragment4;
     FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_authorization);
 
-        fragment1 = new Fragment1();
-        fragment2 = new Fragment2();
+        fragment3 = new Fragment3();
+        fragment4 = new Fragment4();
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainerMain, fragment1);
+        fragmentTransaction.add(R.id.fragmentContainerAuthorization, fragment3);
         fragmentTransaction.commit();
-
-
     }
 
 }
