@@ -30,11 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
         android:text="@string/btnGo"/>
-    <Button
-        android:id="@+id/buttonCheckIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/buttonCheckIn"/>
 
 
 </LinearLayout>

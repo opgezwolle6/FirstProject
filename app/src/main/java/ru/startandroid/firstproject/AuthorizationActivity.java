@@ -37,11 +37,8 @@ public class AuthorizationActivity extends FragmentActivity implements View.OnCl
         etPassword = (EditText) findViewById(R.id.edit_text_password);
 
         Button buttonGo = (Button) findViewById(R.id.buttonGo);
-        Button buttonCheckIn = (Button) findViewById(R.id.buttonCheckIn);
-
 
         buttonGo.setOnClickListener(this);
-        buttonCheckIn.setOnClickListener(this);
 
         loadLoginAndPassword();
 
@@ -58,6 +55,7 @@ public class AuthorizationActivity extends FragmentActivity implements View.OnCl
         }
     }
 
+    // сохранение логина и пароля в преференс
     public void saveLoginAndPassword(){
         sharedPreferencesLogAndPass = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferencesLogAndPass.edit();
@@ -66,6 +64,7 @@ public class AuthorizationActivity extends FragmentActivity implements View.OnCl
         editor.commit();
     }
 
+    // загрузка логина и пароля из преференс
     public void loadLoginAndPassword(){
         sharedPreferencesLogAndPass = getPreferences(Context.MODE_PRIVATE);
         String login = sharedPreferencesLogAndPass.getString(LOGIN, "");
