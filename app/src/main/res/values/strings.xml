@@ -2,9 +2,11 @@
     <string name="app_name">FirstProject</string>
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
-    <string name="go">Войти</string>
-    <string name="next">Далее</string>
-    <string name="Exit">Выход</string>
+    <string name="btnGo">Войти</string>
+    <string name="btnNext">Далее</string>
+    <string name="btnExit">Выход</string>
     <string name="first_name">Имя</string>
     <string name="second_name">Фамилия</string>
+    <string name="buttonToRegister">Зарегистрироваться</string>
+    <string name="buttonCheckIn">Регистрация</string>
 </resources>

@@ -1,31 +1,36 @@
 package ru.startandroid.firstproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Fragment1 fragment1;
-    Fragment2 fragment2;
-    FragmentTransaction fragmentTransaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragment1 = new Fragment1();
-        fragment2 = new Fragment2();
-
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainerMain, fragment1);
+        // добавление фрагмента с кнопкой Далее
+        FragmentMainNext fragmentMainNext = new FragmentMainNext();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction  = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragmentContainerMain, fragmentMainNext);
         fragmentTransaction.commit();
-
+        // фрагмент добавлен в мейн
 
     }
 
+
+    @Override
+    public void onClick(View v) {
+    }
 }
+
