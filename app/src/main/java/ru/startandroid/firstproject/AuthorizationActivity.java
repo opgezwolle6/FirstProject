@@ -1,6 +1,6 @@
 package ru.startandroid.firstproject;
 
-import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,12 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-public class AuthorizationActivity extends FragmentActivity implements View.OnClickListener {
+public class AuthorizationActivity extends AppCompatActivity implements View.OnClickListener {
 
     SharedPreferences sharedPreferencesLogAndPass;
     EditText etLogin;
     EditText etPassword;
+    Button buttonGo;
 
+    public static final String FILE_NAME = "logAndPass";
     final static String LOGIN = "login";
     final static String PASSWORD = "password";
 
@@ -36,8 +38,7 @@ public class AuthorizationActivity extends FragmentActivity implements View.OnCl
         etLogin = (EditText) findViewById(R.id.edit_text_login);
         etPassword = (EditText) findViewById(R.id.edit_text_password);
 
-        Button buttonGo = (Button) findViewById(R.id.buttonGo);
-
+        buttonGo = (Button) findViewById(R.id.buttonGo);
         buttonGo.setOnClickListener(this);
 
         loadLoginAndPassword();
@@ -57,7 +58,7 @@ public class AuthorizationActivity extends FragmentActivity implements View.OnCl
 
     // сохранение логина и пароля в преференс
     public void saveLoginAndPassword(){
-        sharedPreferencesLogAndPass = getPreferences(Context.MODE_PRIVATE);
+        sharedPreferencesLogAndPass = getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferencesLogAndPass.edit();
         editor.putString(LOGIN, etLogin.getText().toString());
         editor.putString(PASSWORD, etPassword.getText().toString());
@@ -66,7 +67,7 @@ public class AuthorizationActivity extends FragmentActivity implements View.OnCl
 
     // загрузка логина и пароля из преференс
     public void loadLoginAndPassword(){
-        sharedPreferencesLogAndPass = getPreferences(Context.MODE_PRIVATE);
+        sharedPreferencesLogAndPass = getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
         String login = sharedPreferencesLogAndPass.getString(LOGIN, "");
         String password = sharedPreferencesLogAndPass.getString(PASSWORD, "");
         etLogin.setText(login);

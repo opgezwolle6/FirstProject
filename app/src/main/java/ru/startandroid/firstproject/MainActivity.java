@@ -5,13 +5,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  {
 
-
+    SharedPreferences sharedPreferencesLogAndPass;
+    public static final String FILE_NAME = "logAndPass";
+    final static String LOGIN = "login";
+    final static String PASSWORD = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +32,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    @Override
-    public void onClick(View v) {
+    public void sharedPreferencesIsNull(){
+        sharedPreferencesLogAndPass = getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferencesLogAndPass.edit();
+        editor.putString(LOGIN, "");
+        editor.putString(PASSWORD, "");
+        editor.commit();
     }
+
 }
 
