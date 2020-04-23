@@ -10,6 +10,7 @@ public class App extends Application {
 
     private Preferences preferences;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
