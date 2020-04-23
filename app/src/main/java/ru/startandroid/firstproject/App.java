@@ -21,4 +21,5 @@ public class App extends Application {
     public Preferences getPreferences() {
         return preferences;
     }
+
 }
