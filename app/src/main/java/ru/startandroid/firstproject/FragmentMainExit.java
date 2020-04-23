@@ -17,9 +17,14 @@ public class FragmentMainExit extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_main_exit, null);
+        return inflater.inflate(R.layout.fragment_main_exit, null);
+    }
 
-        Button buttonExit = v.findViewById(R.id.btnExit);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button buttonExit = view.findViewById(R.id.btnExit);
         buttonExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,9 +38,7 @@ public class FragmentMainExit extends Fragment {
             }
         });
 
-        return v;
     }
-
 
     @Override
     public void onDestroyView() {

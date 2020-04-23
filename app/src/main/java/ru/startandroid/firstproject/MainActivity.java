@@ -1,6 +1,7 @@
 package ru.startandroid.firstproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -9,7 +10,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends BaseActivity  {
 
     SharedPreferences sharedPreferencesLogAndPass;
     public static final String FILE_NAME = "logAndPass";
@@ -23,10 +24,7 @@ public class MainActivity extends AppCompatActivity  {
 
         // добавление фрагмента с кнопкой Далее
         FragmentMainNext fragmentMainNext = new FragmentMainNext();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction  = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainerMain, fragmentMainNext);
-        fragmentTransaction.commit();
+        openFragment(fragmentMainNext);
         // фрагмент добавлен в мейн
 
     }

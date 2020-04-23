@@ -12,18 +12,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import ru.startandroid.firstproject.utils.Preferences;
 
-public class AuthorizationActivity extends AppCompatActivity implements View.OnClickListener {
 
-    SharedPreferences sharedPreferencesLogAndPass;
+public class AuthorizationActivity extends BaseActivity implements View.OnClickListener {
+
     EditText etLogin;
     EditText etPassword;
     Button buttonGo;
 
-    public static final String FILE_NAME = "logAndPass";
     final static String LOGIN = "login";
     final static String PASSWORD = "password";
-
+    final static String NAME = "password";
 
     private FragmentRegistration fragmentRegistration;
     private FragmentManager fragmentManager;
@@ -39,7 +39,12 @@ public class AuthorizationActivity extends AppCompatActivity implements View.OnC
         etPassword = (EditText) findViewById(R.id.edit_text_password);
 
         buttonGo = (Button) findViewById(R.id.buttonGo);
-        buttonGo.setOnClickListener(this);
+
+        buttonGo.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            saveLoginAndPassword();
+        });
 
         loadLoginAndPassword();
 
@@ -58,26 +63,25 @@ public class AuthorizationActivity extends AppCompatActivity implements View.OnC
 
     // сохранение логина и пароля в преференс
     public void saveLoginAndPassword(){
-        sharedPreferencesLogAndPass = getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferencesLogAndPass.edit();
-        editor.putString(LOGIN, etLogin.getText().toString());
+        Preferences preferences = App.instance.getPreferences();
+        preferences.saveLogin(etLogin.getText().toString());
+
         editor.putString(PASSWORD, etPassword.getText().toString());
         editor.commit();
     }
 
     // загрузка логина и пароля из преференс
     public void loadLoginAndPassword(){
-        sharedPreferencesLogAndPass = getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
-        String login = sharedPreferencesLogAndPass.getString(LOGIN, "");
-        String password = sharedPreferencesLogAndPass.getString(PASSWORD, "");
+        String login = App.instance.getPreferences().getString(LOGIN, "");
+        String password = App.instance.getPreferences().getString(PASSWORD, "");
         etLogin.setText(login);
         etPassword.setText(password);
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         saveLoginAndPassword();
+        super.onDestroy();
     }
 
 

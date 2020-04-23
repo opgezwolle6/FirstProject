@@ -9,7 +9,6 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 public class FragmentMainNext extends Fragment {
 
@@ -25,10 +24,7 @@ public class FragmentMainNext extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentMainExit fragmentMainExit = new FragmentMainExit();
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainerMain, fragmentMainExit);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                ((MainActivity) getActivity()).openFragment(fragmentMainExit);
             }
         });
 
