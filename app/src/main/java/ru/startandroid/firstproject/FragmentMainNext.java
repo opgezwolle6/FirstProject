@@ -24,7 +24,7 @@ public class FragmentMainNext extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentMainExit fragmentMainExit = new FragmentMainExit();
-                ((MainActivity) getActivity()).openFragment(fragmentMainExit);
+                ((MainActivity) getActivity()).replaceFragment(BaseActivity.FRAGMENT_CONTAINER_MAIN, fragmentMainExit);
             }
         });
 

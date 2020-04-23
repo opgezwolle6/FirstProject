@@ -1,34 +1,17 @@
 package ru.startandroid.firstproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import ru.startandroid.firstproject.utils.Preferences;
-
 
 public class AuthorizationActivity extends BaseActivity implements View.OnClickListener {
 
     EditText etLogin;
     EditText etPassword;
     Button buttonGo;
-
-    final static String LOGIN = "login";
-    final static String PASSWORD = "password";
-    final static String NAME = "password";
-
-    private FragmentRegistration fragmentRegistration;
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
-
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -39,12 +22,7 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
         etPassword = (EditText) findViewById(R.id.edit_text_password);
 
         buttonGo = (Button) findViewById(R.id.buttonGo);
-
-        buttonGo.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            saveLoginAndPassword();
-        });
+        buttonGo.setOnClickListener(this);
 
         loadLoginAndPassword();
 
@@ -65,17 +43,14 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
     public void saveLoginAndPassword(){
         Preferences preferences = App.instance.getPreferences();
         preferences.saveLogin(etLogin.getText().toString());
-
-        editor.putString(PASSWORD, etPassword.getText().toString());
-        editor.commit();
+        preferences.savePassword(etPassword.getText().toString());
     }
 
     // загрузка логина и пароля из преференс
     public void loadLoginAndPassword(){
-        String login = App.instance.getPreferences().getString(LOGIN, "");
-        String password = App.instance.getPreferences().getString(PASSWORD, "");
-        etLogin.setText(login);
-        etPassword.setText(password);
+        Preferences preferences = App.instance.getPreferences();
+        etLogin.setText(preferences.getLogin());
+        etPassword.setText(preferences.getPassword());
     }
 
     @Override
@@ -83,6 +58,4 @@ public class AuthorizationActivity extends BaseActivity implements View.OnClickL
         saveLoginAndPassword();
         super.onDestroy();
     }
-
-
 }

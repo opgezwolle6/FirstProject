@@ -29,6 +29,24 @@ public class Preferences {
                 .apply();
     }
 
+    public void savePassword(String password) {
+        preferences.edit()
+                .putString(Key.PASSWORD.name(), password)
+                .apply();
+    }
+
+    public String getPassword() {
+        return preferences.getString(Key.PASSWORD.name(), "");
+    }
+
+    public void clearPassword() {
+        preferences.edit()
+                .remove(Key.PASSWORD.name())
+                .apply();
+    }
+
+
+
     private enum Key {
         LOGIN,
         PASSWORD

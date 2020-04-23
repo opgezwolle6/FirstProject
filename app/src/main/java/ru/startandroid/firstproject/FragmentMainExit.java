@@ -12,13 +12,12 @@ import androidx.fragment.app.Fragment;
 
 public class FragmentMainExit extends Fragment {
 
-    final String LOG_TAG = "myLogs";
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main_exit, null);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class FragmentMainExit extends Fragment {
             public void onClick(View v) {
                 if (getActivity() != null){
                     MainActivity ma = (MainActivity)getActivity();
-                    ma.sharedPreferencesIsNull();
+                    ma.clearLoginAndPassword();
                 }
                 Intent intent = new Intent(getActivity(), AuthorizationActivity.class);
                 startActivity(intent);
@@ -44,6 +43,5 @@ public class FragmentMainExit extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
     }
-
 
 }
