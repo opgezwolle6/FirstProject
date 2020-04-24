@@ -28,8 +28,7 @@ public class FragmentMainExit extends Fragment {
             @Override
             public void onClick(View v) {
                 if (getActivity() != null){
-                    MainActivity ma = (MainActivity)getActivity();
-                    ma.clearLoginAndPassword();
+                    ((MainActivity)getActivity()).clearLoginAndPassword();
                 }
                 Intent intent = new Intent(getActivity(), AuthorizationActivity.class);
                 startActivity(intent);

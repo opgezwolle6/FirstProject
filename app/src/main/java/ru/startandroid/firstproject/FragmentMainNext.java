@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import ru.startandroid.firstproject.utils.Preferences;
 
 public class FragmentMainNext extends Fragment {
 
@@ -16,9 +19,19 @@ public class FragmentMainNext extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_main_next, null);
+        return inflater.inflate(R.layout.fragment_main_next, null);
 
-        Button buttonNext = v.findViewById(R.id.btnNext);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        TextView helloName = view.findViewById(R.id.tvHelloName);
+        Button buttonNext = view.findViewById(R.id.btnNext);
+
+        setTextHelloName(helloName);
+
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,7 +41,10 @@ public class FragmentMainNext extends Fragment {
             }
         });
 
-        return v;
     }
 
+    public void setTextHelloName(TextView textView){
+        Preferences preferences = App.instance.getPreferences();
+        textView.setText("Привет, " + preferences.getFirstName() + "!");
+    }
 }

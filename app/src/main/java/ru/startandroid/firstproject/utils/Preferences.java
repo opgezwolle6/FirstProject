@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 public class Preferences {
 
-    public static final String FILE_NAME = "system";
+    private static final String FILE_NAME = "system";
 
     private SharedPreferences preferences;
 
@@ -13,6 +13,8 @@ public class Preferences {
         preferences = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
     }
 
+
+    // логин
     public void saveLogin(String login) {
         preferences.edit()
                 .putString(Key.LOGIN.name(), login)
@@ -29,6 +31,7 @@ public class Preferences {
                 .apply();
     }
 
+    // пароль
     public void savePassword(String password) {
         preferences.edit()
                 .putString(Key.PASSWORD.name(), password)
@@ -46,10 +49,47 @@ public class Preferences {
     }
 
 
+    // имя
+    public void saveFirstName(String firstName) {
+        preferences.edit()
+                .putString(Key.FIRST_NAME.name(), firstName)
+                .apply();
+    }
+
+    public String getFirstName() {
+        return preferences.getString(Key.FIRST_NAME.name(), "");
+    }
+
+    public void clearFirstName() {
+        preferences.edit()
+                .remove(Key.FIRST_NAME.name())
+                .apply();
+    }
+
+
+    // фамилия
+    public void saveSecondName(String secondName) {
+        preferences.edit()
+                .putString(Key.SECOND_NAME.name(), secondName)
+                .apply();
+    }
+
+    public String getSecondName() {
+        return preferences.getString(Key.SECOND_NAME.name(), "");
+    }
+
+    public void clearSecondName() {
+        preferences.edit()
+                .remove(Key.SECOND_NAME.name())
+                .apply();
+    }
+
 
     private enum Key {
         LOGIN,
-        PASSWORD
+        PASSWORD,
+        FIRST_NAME,
+        SECOND_NAME
     }
 
 }
