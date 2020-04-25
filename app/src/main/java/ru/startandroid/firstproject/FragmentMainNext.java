@@ -10,11 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import ru.startandroid.firstproject.utils.Preferences;
 
 public class FragmentMainNext extends Fragment {
 
+    NavController navController;
 
     @Nullable
     @Override
@@ -29,6 +32,7 @@ public class FragmentMainNext extends Fragment {
 
         TextView helloName = view.findViewById(R.id.tvHelloName);
         Button buttonNext = view.findViewById(R.id.btnNext);
+        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
 
         setTextHelloName(helloName);
 
@@ -36,8 +40,7 @@ public class FragmentMainNext extends Fragment {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentMainExit fragmentMainExit = new FragmentMainExit();
-                ((MainActivity) getActivity()).replaceFragment(BaseActivity.FRAGMENT_CONTAINER_MAIN, fragmentMainExit);
+                navController.navigate(R.id.fragmentMainExit);
             }
         });
 

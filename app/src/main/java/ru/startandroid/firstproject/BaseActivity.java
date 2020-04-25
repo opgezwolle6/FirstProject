@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class BaseActivity extends AppCompatActivity {
 
-    final static int FRAGMENT_CONTAINER_MAIN = R.id.fragmentContainerMain;
-    final static int FRAGMENT_CONTAINER_AUTHORIZATION = R.id.fragmentContainerAuthorization;
+    // final static int FRAGMENT_CONTAINER_MAIN = R.id.fragmentContainerMain;
+    // final static int FRAGMENT_CONTAINER_AUTHORIZATION = R.id.fragmentContainerAuthorization;
 
 
     // метод добавление фрагмента в контейнер

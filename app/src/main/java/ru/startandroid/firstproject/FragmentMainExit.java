@@ -10,7 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+
 public class FragmentMainExit extends Fragment {
+
+
 
     @Nullable
     @Override
@@ -24,16 +27,13 @@ public class FragmentMainExit extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button buttonExit = view.findViewById(R.id.btnExit);
-        buttonExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity() != null){
-                    ((MainActivity)getActivity()).clearLoginAndPassword();
-                }
-                Intent intent = new Intent(getActivity(), AuthorizationActivity.class);
-                startActivity(intent);
-                onDestroyView();
+        buttonExit.setOnClickListener(v -> {
+            if (getActivity() != null){
+                ((MainActivity)getActivity()).clearLoginAndPassword();
             }
+            Intent intent = new Intent(getActivity(), AuthorizationActivity.class);
+            startActivity(intent);
+            onDestroyView();
         });
 
     }

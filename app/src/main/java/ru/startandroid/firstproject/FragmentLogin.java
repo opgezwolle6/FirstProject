@@ -11,8 +11,13 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class FragmentLogin extends Fragment {
+
+
+    NavController navController;
 
     @Nullable
     @Override
@@ -30,6 +35,8 @@ public class FragmentLogin extends Fragment {
         Button buttonGo = (Button) view.findViewById(R.id.buttonGo);
         Button buttonCheckIn = (Button) view.findViewById(R.id.buttonCheckIn);
 
+        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
+
         ((AuthorizationActivity)getActivity()).loadLoginAndPassword(etLogin, etPassword);
 
         buttonGo.setOnClickListener(v -> {
@@ -39,9 +46,7 @@ public class FragmentLogin extends Fragment {
         });
 
         buttonCheckIn.setOnClickListener(v -> {
-            FragmentRegistration fragmentRegistration = new FragmentRegistration();
-            ((AuthorizationActivity)getActivity()).saveLoginAndPassword(etLogin, etPassword);
-            ((AuthorizationActivity)getActivity()).replaceFragment(BaseActivity.FRAGMENT_CONTAINER_AUTHORIZATION, fragmentRegistration);
+            navController.navigate(R.id.fragmentRegistration);
         });
 
     }

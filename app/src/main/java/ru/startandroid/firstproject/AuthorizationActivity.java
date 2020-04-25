@@ -6,18 +6,12 @@ import ru.startandroid.firstproject.utils.Preferences;
 
 public class AuthorizationActivity extends BaseActivity  {
 
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization);
 
-        // при создании активити вставляется фрагмент FragmentLogin
-        FragmentLogin fragmentLogin = new FragmentLogin();
-        openFragment(FRAGMENT_CONTAINER_AUTHORIZATION, fragmentLogin);
-
     }
-
 
     // сохранение логина и пароля в преференс
     public void saveLoginAndPassword(EditText etLogin, EditText etPassword){

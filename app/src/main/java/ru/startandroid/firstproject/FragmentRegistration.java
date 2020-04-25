@@ -10,11 +10,14 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import ru.startandroid.firstproject.utils.Preferences;
 
 public class FragmentRegistration extends Fragment {
 
+    NavController navController;
 
     @Nullable
     @Override
@@ -31,19 +34,17 @@ public class FragmentRegistration extends Fragment {
         EditText etLogin = view.findViewById(R.id.edit_text_login);
         EditText etPassword = view.findViewById(R.id.edit_text_password);
 
-        Button buttonToRegister = view.findViewById(R.id.buttonToRegister);
-        buttonToRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Preferences preferences = App.instance.getPreferences();
-                preferences.saveFirstName(etFirstName.getText().toString());
-                preferences.saveSecondName(etSecondName.getText().toString());
-                preferences.saveLogin(etLogin.getText().toString());
-                preferences.savePassword(etPassword.getText().toString());
+        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
 
-                FragmentLogin fragmentLogin = new FragmentLogin();
-                ((AuthorizationActivity)getActivity()).replaceFragment(BaseActivity.FRAGMENT_CONTAINER_AUTHORIZATION, fragmentLogin);
-            }
+        Button buttonToRegister = view.findViewById(R.id.buttonToRegister);
+        buttonToRegister.setOnClickListener(v -> {
+            Preferences preferences = App.instance.getPreferences();
+            preferences.saveFirstName(etFirstName.getText().toString());
+            preferences.saveSecondName(etSecondName.getText().toString());
+            preferences.saveLogin(etLogin.getText().toString());
+            preferences.savePassword(etPassword.getText().toString());
+
+            navController.navigate(R.id.fragmentLogin);
         });
     }
 }
