@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +17,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -43,7 +48,8 @@ public class FragmentLogin extends Fragment  {
         EditText etPassword = (EditText) view.findViewById(R.id.edit_text_password);
 
         Button buttonGo = (Button) view.findViewById(R.id.buttonGo);
-        Button buttonCheckIn = (Button) view.findViewById(R.id.buttonCheckIn);
+        TextView tvCheckIn = (TextView) view.findViewById(R.id.tvCheckIn);
+        TextView tvForgotPass = (TextView) view.findViewById(R.id.tvForgotPass);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -56,19 +62,52 @@ public class FragmentLogin extends Fragment  {
 
 
         buttonGo.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
-            ((AuthorizationActivity) getActivity()).saveLoginAndPassword(etLogin, etPassword);
+            signIn(etLogin.getText().toString(),etPassword.getText().toString());
+            // ((AuthorizationActivity) getActivity()).saveLoginAndPassword(etLogin, etPassword);
         });
 
 
-
-        buttonCheckIn.setOnClickListener(v -> {
+        tvCheckIn.setOnClickListener(v -> {
             navController.navigate(R.id.fragmentRegistration);
         });
 
+        tvForgotPass.setOnClickListener(v -> {
+            navController.navigate(R.id.fragmentForgotPassword);
+        });
+
+    }
 
 
+    public void signIn(String email, String password) {
+        Log.d(TAG, "signIn:" + email);
+
+        //showProgressBar();
+
+        // [START sign_in_with_email]
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(getActivity(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            // [START_EXCLUDE]
+                            // [END_EXCLUDE]
+                        }
+
+                        //hideProgressBar();
+
+                    }
+                });
+        // [END sign_in_with_email]
     }
 
 

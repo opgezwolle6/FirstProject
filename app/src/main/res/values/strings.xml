@@ -8,5 +8,10 @@
     <string name="first_name">Имя</string>
     <string name="second_name">Фамилия</string>
     <string name="buttonToRegister">Зарегистрироваться</string>
-    <string name="buttonCheckIn">Регистрация</string>
+    <string name="txtCheckIn">Регистрация</string>
+    <string name="tvForgotPass">Забыли пароль?</string>
+    <string name="etRepeatPass">Повторите пароль</string>
+    <string name="email">Email</string>
+    <string name="edit_text_Email">Email</string>
+    <string name="btnRemindPassword">Напомнить пароль</string>
 </resources>

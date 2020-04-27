@@ -12,5 +12,9 @@
         android:id="@+id/fragmentRegistration"
         android:name="ru.startandroid.firstproject.FragmentRegistration"
         android:label="FragmentRegistration" />
+    <fragment
+        android:id="@+id/fragmentForgotPassword"
+        android:name="ru.startandroid.firstproject.FragmentForgotPassword"
+        android:label="FragmentForgotPassword" />
 
 </navigation>

@@ -28,17 +28,26 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:text="@string/btnGo"/>
 
-    <Button
-        android:id="@+id/buttonCheckIn"
+
+    <TextView
+        android:id="@+id/tvForgotPass"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:text="@string/buttonCheckIn"/>
+        android:textColor="#000000"
+        android:text="@string/tvForgotPass"/>
 
     <TextView
-        android:id="@+id/title_text"
+        android:id="@+id/tvCheckIn"
+        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:textColor="#000000"
+        android:text="@string/txtCheckIn"/>
+
+
 
 
 
