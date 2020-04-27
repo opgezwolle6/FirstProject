@@ -2,6 +2,7 @@ package ru.startandroid.firstproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,17 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-public class FragmentLogin extends Fragment {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+
+public class FragmentLogin extends Fragment  {
+
+    public static final String TAG = "myLogs";
+
+    private FirebaseAuth mAuth;
+
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     NavController navController;
 
@@ -35,19 +45,34 @@ public class FragmentLogin extends Fragment {
         Button buttonGo = (Button) view.findViewById(R.id.buttonGo);
         Button buttonCheckIn = (Button) view.findViewById(R.id.buttonCheckIn);
 
-        navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
+        mAuth = FirebaseAuth.getInstance();
 
-        ((AuthorizationActivity)getActivity()).loadLoginAndPassword(etLogin, etPassword);
+
+
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
+        ((AuthorizationActivity) getActivity()).loadLoginAndPassword(etLogin, etPassword);
+
+
 
         buttonGo.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
-            ((AuthorizationActivity)getActivity()).saveLoginAndPassword(etLogin,etPassword);
+            ((AuthorizationActivity) getActivity()).saveLoginAndPassword(etLogin, etPassword);
         });
+
+
 
         buttonCheckIn.setOnClickListener(v -> {
             navController.navigate(R.id.fragmentRegistration);
         });
 
+
+
     }
+
+
+
+
+
 }

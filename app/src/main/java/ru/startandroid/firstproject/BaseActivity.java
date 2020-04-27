@@ -1,18 +1,15 @@
 package ru.startandroid.firstproject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class BaseActivity extends AppCompatActivity {
-
-    // final static int FRAGMENT_CONTAINER_MAIN = R.id.fragmentContainerMain;
-    // final static int FRAGMENT_CONTAINER_AUTHORIZATION = R.id.fragmentContainerAuthorization;
-
-
 
 
     // метод добавление фрагмента в контейнер
@@ -31,4 +28,6 @@ public class BaseActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
+
 }
