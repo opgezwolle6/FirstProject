@@ -57,7 +57,14 @@ public class FragmentLogin extends Fragment  {
         tvForgotPass = (TextView) view.findViewById(R.id.tvForgotPass);
 
         mAuth = FirebaseAuth.getInstance();
-        etLogin.setText(mAuth.getCurrentUser().getEmail());
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if (!user.getEmail().equals("")){
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
+
+
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 

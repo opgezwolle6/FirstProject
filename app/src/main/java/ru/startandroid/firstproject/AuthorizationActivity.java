@@ -1,6 +1,11 @@
 package ru.startandroid.firstproject;
 
 import android.os.Bundle;
+import android.widget.EditText;
+
+
+
+import ru.startandroid.firstproject.utils.Preferences;
 
 public class AuthorizationActivity extends BaseActivity  {
 
@@ -18,7 +23,7 @@ public class AuthorizationActivity extends BaseActivity  {
 
 
 }
- /*
+/*
     // сохранение логина и пароля в преференс
     public void saveLoginAndPassword(EditText etLogin, EditText etPassword){
         Preferences preferences = App.instance.getPreferences();
