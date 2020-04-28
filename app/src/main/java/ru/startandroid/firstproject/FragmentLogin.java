@@ -51,11 +51,11 @@ public class FragmentLogin extends Fragment  {
         TextView tvForgotPass = (TextView) view.findViewById(R.id.tvForgotPass);
 
         mAuth = FirebaseAuth.getInstance();
+        etLogin.setText(mAuth.getCurrentUser().getEmail());
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         // ((AuthorizationActivity) getActivity()).loadLoginAndPassword(etLogin, etPassword);
-
 
 
         buttonGo.setOnClickListener(v -> {
@@ -77,6 +77,7 @@ public class FragmentLogin extends Fragment  {
 
     public void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
+
 
         //showProgressBar();
 

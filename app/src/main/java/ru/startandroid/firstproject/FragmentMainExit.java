@@ -10,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class FragmentMainExit extends Fragment {
 
-
+    private FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -25,6 +27,8 @@ public class FragmentMainExit extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mAuth = FirebaseAuth.getInstance();
 
         Button buttonExit = view.findViewById(R.id.btnExit);
         buttonExit.setOnClickListener(v -> {
@@ -41,6 +45,7 @@ public class FragmentMainExit extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mAuth.signOut();
     }
 
 }
