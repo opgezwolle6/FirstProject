@@ -25,9 +25,13 @@ public class FragmentForgotPassword extends Fragment {
 
     private FirebaseAuth mAuth;
 
-    NavController navController;
+    private NavController navController;
 
-    SpinnerDialog spinnerDialog;
+    private SpinnerDialog spinnerDialog;
+
+    private EditText etEmail;
+    private Button btnRemindPassword;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_forgot_password, null);
@@ -39,8 +43,8 @@ public class FragmentForgotPassword extends Fragment {
 
         spinnerDialog = new SpinnerDialog();
 
-        EditText etEmail = (EditText) view.findViewById(R.id.edit_text_email);
-        Button btnRemindPassword = (Button) view.findViewById(R.id.buttonRemindPassword);
+        etEmail = (EditText) view.findViewById(R.id.edit_text_email);
+        btnRemindPassword = (Button) view.findViewById(R.id.buttonRemindPassword);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -55,7 +59,7 @@ public class FragmentForgotPassword extends Fragment {
 
     }
 
-    public void sendPassword(String emailAddress)   {
+    private void sendPassword(String emailAddress)   {
 
         spinnerDialog.show(getChildFragmentManager(),"spinnerDialog");
 

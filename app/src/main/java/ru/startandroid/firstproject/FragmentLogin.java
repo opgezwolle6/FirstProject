@@ -26,13 +26,16 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class FragmentLogin extends Fragment  {
 
-    public static final String TAG = "myLogs";
+    private static final String TAG = "myLogs";
 
     private FirebaseAuth mAuth;
 
-    SpinnerDialog spinnerDialog;
+    private SpinnerDialog spinnerDialog;
 
-    NavController navController;
+    private NavController navController;
+    private EditText etLogin, etPassword;
+    private Button buttonGo;
+    private TextView tvCheckIn,tvForgotPass;
 
     @Nullable
     @Override
@@ -46,12 +49,12 @@ public class FragmentLogin extends Fragment  {
 
         spinnerDialog = new SpinnerDialog();
 
-        EditText etLogin = (EditText) view.findViewById(R.id.edit_text_login);
-        EditText etPassword = (EditText) view.findViewById(R.id.edit_text_password);
+        etLogin = (EditText) view.findViewById(R.id.edit_text_login);
+        etPassword = (EditText) view.findViewById(R.id.edit_text_password);
 
-        Button buttonGo = (Button) view.findViewById(R.id.buttonGo);
-        TextView tvCheckIn = (TextView) view.findViewById(R.id.tvCheckIn);
-        TextView tvForgotPass = (TextView) view.findViewById(R.id.tvForgotPass);
+        buttonGo = (Button) view.findViewById(R.id.buttonGo);
+        tvCheckIn = (TextView) view.findViewById(R.id.tvCheckIn);
+        tvForgotPass = (TextView) view.findViewById(R.id.tvForgotPass);
 
         mAuth = FirebaseAuth.getInstance();
         etLogin.setText(mAuth.getCurrentUser().getEmail());
@@ -78,7 +81,7 @@ public class FragmentLogin extends Fragment  {
     }
 
 
-    public void signIn(String email, String password) {
+    private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
 
         spinnerDialog.show(getChildFragmentManager(),"spinnerDialog");
@@ -110,9 +113,4 @@ public class FragmentLogin extends Fragment  {
                 });
         // [END sign_in_with_email]
     }
-
-
-
-
-
 }

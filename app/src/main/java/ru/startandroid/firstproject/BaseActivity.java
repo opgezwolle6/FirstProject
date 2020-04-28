@@ -1,17 +1,12 @@
 package ru.startandroid.firstproject;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-
-import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 public class BaseActivity extends AppCompatActivity {
 
+}
 
+/*
     // метод добавление фрагмента в контейнер
     public void openFragment(int fragmentContainer, Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -28,6 +23,4 @@ public class BaseActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
-
-
-}
+ */

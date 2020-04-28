@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class FragmentMainExit extends Fragment {
 
     private FirebaseAuth mAuth;
+    private Button buttonExit;
 
     @Nullable
     @Override
@@ -30,7 +31,7 @@ public class FragmentMainExit extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
 
-        Button buttonExit = view.findViewById(R.id.btnExit);
+        buttonExit = view.findViewById(R.id.btnExit);
         buttonExit.setOnClickListener(v -> {
             if (getActivity() != null){
                 ((MainActivity)getActivity()).clearLoginAndPassword();

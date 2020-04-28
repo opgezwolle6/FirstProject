@@ -25,13 +25,17 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class FragmentRegistration extends Fragment {
 
-    public static final String TAG = "myLogs";
+    private static final String TAG = "myLogs";
 
     private FirebaseAuth mAuth;
 
-    SpinnerDialog spinnerDialog;
+    private SpinnerDialog spinnerDialog;
 
-    NavController navController;
+    private NavController navController;
+
+    private EditText etLogin,etPassword,etRepeatPassword;
+    private Button buttonToRegister;
+
 
     @Nullable
     @Override
@@ -45,11 +49,11 @@ public class FragmentRegistration extends Fragment {
 
         spinnerDialog = new SpinnerDialog();
 
-        EditText etLogin = view.findViewById(R.id.edit_text_login);
-        EditText etPassword = view.findViewById(R.id.edit_text_password);
-        EditText etRepeatPassword = view.findViewById(R.id.edit_text_repeat_password);
+        etLogin = view.findViewById(R.id.edit_text_login);
+        etPassword = view.findViewById(R.id.edit_text_password);
+        etRepeatPassword = view.findViewById(R.id.edit_text_repeat_password);
 
-        Button buttonToRegister = view.findViewById(R.id.buttonToRegister);
+        buttonToRegister = view.findViewById(R.id.buttonToRegister);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -66,7 +70,7 @@ public class FragmentRegistration extends Fragment {
         });
     }
 
-    public void createAccount(String email, String password) {
+    private void createAccount(String email, String password) {
 
             Log.d(TAG, "createAccount:" + email);
 
@@ -91,14 +95,12 @@ public class FragmentRegistration extends Fragment {
                                         Toast.LENGTH_SHORT).show();
                             }
 
-
                             spinnerDialog.dismiss();
                             // [START_EXCLUDE]
                             //hideProgressBar();
                             // [END_EXCLUDE]
                         }
                     });
-
 
         // [END create_user_with_email]
     }

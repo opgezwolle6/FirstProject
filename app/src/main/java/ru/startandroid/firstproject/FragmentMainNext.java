@@ -17,7 +17,9 @@ import ru.startandroid.firstproject.utils.Preferences;
 
 public class FragmentMainNext extends Fragment {
 
-    NavController navController;
+    private NavController navController;
+    private TextView helloName;
+    private Button buttonNext;
 
     @Nullable
     @Override
@@ -30,8 +32,8 @@ public class FragmentMainNext extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView helloName = view.findViewById(R.id.tvHelloName);
-        Button buttonNext = view.findViewById(R.id.btnNext);
+        helloName = view.findViewById(R.id.tvHelloName);
+        buttonNext = view.findViewById(R.id.btnNext);
         navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
 
         setTextHelloName(helloName);
@@ -46,7 +48,7 @@ public class FragmentMainNext extends Fragment {
 
     }
 
-    public void setTextHelloName(TextView textView){
+    private void setTextHelloName(TextView textView){
         Preferences preferences = App.instance.getPreferences();
         textView.setText("Привет, " + preferences.getFirstName() + "!");
     }
