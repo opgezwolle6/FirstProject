@@ -55,45 +55,4 @@ public class AuthorizationActivity extends BaseActivity  {
     }
 
 
-
-
-
-
-
-    public void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
-
-        //showProgressBar();
-
-        // [START sign_in_with_email]
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(AuthorizationActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            // [START_EXCLUDE]
-                            // [END_EXCLUDE]
-                        }
-
-                        //hideProgressBar();
-
-                    }
-                });
-        // [END sign_in_with_email]
-    }
-
-    public void signOut() {
-        mAuth.signOut();
-
-    }
-
-
 }

@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity  {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         // добавление фрагмента с кнопкой Далее
 
+
         // фрагмент добавлен в мейн
 
     }

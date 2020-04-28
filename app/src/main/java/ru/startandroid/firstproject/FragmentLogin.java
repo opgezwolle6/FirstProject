@@ -30,7 +30,6 @@ public class FragmentLogin extends Fragment  {
 
     private FirebaseAuth mAuth;
 
-    private FirebaseAuth.AuthStateListener mAuthListener;
 
     NavController navController;
 
@@ -53,11 +52,9 @@ public class FragmentLogin extends Fragment  {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-        ((AuthorizationActivity) getActivity()).loadLoginAndPassword(etLogin, etPassword);
+        // ((AuthorizationActivity) getActivity()).loadLoginAndPassword(etLogin, etPassword);
 
 
 
@@ -97,7 +94,7 @@ public class FragmentLogin extends Fragment  {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getActivity(), "Authentication failed.",
+                            Toast.makeText(getActivity(), "Проверьте правильность ввода логина или пароля",
                                     Toast.LENGTH_SHORT).show();
                             // [START_EXCLUDE]
                             // [END_EXCLUDE]
