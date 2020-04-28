@@ -30,6 +30,7 @@ public class FragmentLogin extends Fragment  {
 
     private FirebaseAuth mAuth;
 
+    SpinnerDialog spinnerDialog;
 
     NavController navController;
 
@@ -42,6 +43,8 @@ public class FragmentLogin extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        spinnerDialog = new SpinnerDialog();
 
         EditText etLogin = (EditText) view.findViewById(R.id.edit_text_login);
         EditText etPassword = (EditText) view.findViewById(R.id.edit_text_password);
@@ -78,7 +81,7 @@ public class FragmentLogin extends Fragment  {
     public void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
 
-
+        spinnerDialog.show(getChildFragmentManager(),"spinnerDialog");
         //showProgressBar();
 
         // [START sign_in_with_email]
@@ -102,7 +105,7 @@ public class FragmentLogin extends Fragment  {
                         }
 
                         //hideProgressBar();
-
+                        spinnerDialog.dismiss();
                     }
                 });
         // [END sign_in_with_email]

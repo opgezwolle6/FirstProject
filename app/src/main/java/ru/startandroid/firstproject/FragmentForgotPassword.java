@@ -27,6 +27,8 @@ public class FragmentForgotPassword extends Fragment {
 
     NavController navController;
 
+    SpinnerDialog spinnerDialog;
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_forgot_password, null);
     }
@@ -34,6 +36,8 @@ public class FragmentForgotPassword extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        spinnerDialog = new SpinnerDialog();
 
         EditText etEmail = (EditText) view.findViewById(R.id.edit_text_email);
         Button btnRemindPassword = (Button) view.findViewById(R.id.buttonRemindPassword);
@@ -43,13 +47,18 @@ public class FragmentForgotPassword extends Fragment {
         navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
 
         btnRemindPassword.setOnClickListener(v -> {
-            sendPassword(etEmail.getText().toString());
+
+                sendPassword(etEmail.getText().toString());
+
         });
 
 
     }
 
-    public void sendPassword(String emailAddress){
+    public void sendPassword(String emailAddress)   {
+
+        spinnerDialog.show(getChildFragmentManager(),"spinnerDialog");
+
 
         mAuth.sendPasswordResetEmail(emailAddress)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -62,6 +71,8 @@ public class FragmentForgotPassword extends Fragment {
                             Toast.makeText(getActivity(), "Пользователя с таким email не существует",
                                     Toast.LENGTH_SHORT).show();
                         }
+
+                        spinnerDialog.dismiss();
                     }
                 });
     }

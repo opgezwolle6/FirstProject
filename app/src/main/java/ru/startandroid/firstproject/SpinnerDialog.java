@@ -21,7 +21,8 @@ public class SpinnerDialog extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        boolean isCancelable = false;
+        setCancelable(false);
         setStyle(DialogFragment.STYLE_NORMAL, R.style.SpinnerDialog);
+
     }
 }

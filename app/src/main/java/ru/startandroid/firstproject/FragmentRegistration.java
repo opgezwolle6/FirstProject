@@ -29,6 +29,7 @@ public class FragmentRegistration extends Fragment {
 
     private FirebaseAuth mAuth;
 
+    SpinnerDialog spinnerDialog;
 
     NavController navController;
 
@@ -41,6 +42,8 @@ public class FragmentRegistration extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        spinnerDialog = new SpinnerDialog();
 
         EditText etLogin = view.findViewById(R.id.edit_text_login);
         EditText etPassword = view.findViewById(R.id.edit_text_password);
@@ -67,6 +70,7 @@ public class FragmentRegistration extends Fragment {
 
             Log.d(TAG, "createAccount:" + email);
 
+            spinnerDialog.show(getChildFragmentManager(),"spinnerDialog");
             //showProgressBar();
 
             // [START create_user_with_email]
@@ -87,6 +91,8 @@ public class FragmentRegistration extends Fragment {
                                         Toast.LENGTH_SHORT).show();
                             }
 
+
+                            spinnerDialog.dismiss();
                             // [START_EXCLUDE]
                             //hideProgressBar();
                             // [END_EXCLUDE]
