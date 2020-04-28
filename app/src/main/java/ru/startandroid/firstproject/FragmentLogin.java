@@ -59,12 +59,10 @@ public class FragmentLogin extends Fragment  {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if (!user.getEmail().equals("")){
+        if (user != null){
             Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
         }
-
-
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
