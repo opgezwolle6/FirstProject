@@ -47,6 +47,7 @@ public class FragmentMainExit extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         mAuth.signOut();
+
     }
 
 }

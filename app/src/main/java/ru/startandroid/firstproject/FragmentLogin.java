@@ -86,35 +86,42 @@ public class FragmentLogin extends Fragment  {
 
 
     private void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
 
-        spinnerDialog.show(getChildFragmentManager(),"spinnerDialog");
-        //showProgressBar();
+        if (email.equals("") || password.equals("")){
+            Toast.makeText(getActivity(), "Пожалуйста, заполните поля с логином и паролем", Toast.LENGTH_LONG).show();
+        } else {
+            Log.d(TAG, "signIn:" + email);
 
-        // [START sign_in_with_email]
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getActivity(), "Проверьте правильность ввода логина или пароля",
-                                    Toast.LENGTH_SHORT).show();
-                            // [START_EXCLUDE]
-                            // [END_EXCLUDE]
+
+            spinnerDialog.show(getChildFragmentManager(),"spinnerDialog");
+            //showProgressBar();
+
+            // [START sign_in_with_email]
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "signInWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                startActivity(intent);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                Toast.makeText(getActivity(), "Проверьте правильность ввода логина или пароля",
+                                        Toast.LENGTH_SHORT).show();
+                                // [START_EXCLUDE]
+                                // [END_EXCLUDE]
+                            }
+
+                            //hideProgressBar();
+                            spinnerDialog.dismiss();
                         }
+                    });
+            // [END sign_in_with_email]
+        }
 
-                        //hideProgressBar();
-                        spinnerDialog.dismiss();
-                    }
-                });
-        // [END sign_in_with_email]
     }
 }
