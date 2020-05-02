@@ -1,11 +1,6 @@
 package ru.startandroid.firstproject;
 
 import android.os.Bundle;
-import android.widget.EditText;
-
-
-
-import ru.startandroid.firstproject.utils.Preferences;
 
 public class AuthorizationActivity extends BaseActivity  {
 

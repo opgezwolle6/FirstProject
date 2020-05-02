@@ -12,4 +12,12 @@
         android:id="@+id/fragmentMainExit"
         android:name="ru.startandroid.firstproject.FragmentMainExit"
         android:label="FragmentMainExit" />
+    <fragment
+        android:id="@+id/fragmentCall"
+        android:name="ru.startandroid.firstproject.FragmentCall"
+        android:label="FragmentCall" />
+    <fragment
+        android:id="@+id/fragmentSend"
+        android:name="ru.startandroid.firstproject.FragmentSend"
+        android:label="FragmentSend" />
 </navigation>

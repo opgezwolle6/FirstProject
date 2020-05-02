@@ -74,7 +74,6 @@ public class FragmentLogin extends Fragment  {
             // ((AuthorizationActivity) getActivity()).saveLoginAndPassword(etLogin, etPassword);
         });
 
-
         tvCheckIn.setOnClickListener(v -> {
             navController.navigate(R.id.fragmentRegistration);
         });

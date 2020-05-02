@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#81D4FA"
+    android:padding="10dp"
     android:orientation="vertical">
+
 
     <TextView
         android:id="@+id/tvHelloName"
         android:layout_width="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_gravity="center_horizontal"
         android:textSize="20dp" />
 
     <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnCall"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="@string/btnNext"/>
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="@string/buttonCall" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="@string/buttonSend" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="@string/btnNext" />
+
+
+</LinearLayout>
